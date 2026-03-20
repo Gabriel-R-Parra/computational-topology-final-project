@@ -1,0 +1,13 @@
+matplotlib
+seaborn
+numpy
+pandas
+polars
+scikit-learn
+jupyterlab
+jupyterlab-vim
+tqdm
+pymc
+pyro-ppl
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
