@@ -5,7 +5,7 @@ import os
 
 def makeBarcodes(pointCloud: str):
     result = subprocess.run(
-        ["./ripser", "--format", "point-cloud", f"../pointCloudsReal/{pointCloud}"],
+        ["./ripser", "--format", "point-cloud", f"../pointCloudsSimplified/{pointCloud}"],
         capture_output=True,
         text=True
     )
@@ -16,7 +16,7 @@ def makeBarcodes(pointCloud: str):
     resultDimZero = (result.stdout)[resultStart: resultEnd]
     resultDimOne = (result.stdout)[resultEnd:]
 
-    print("A")
+    # print("A")
 
     # print(result.stdout)
     # print(resultDimZero)
@@ -35,24 +35,28 @@ def makeBarcodes(pointCloud: str):
         # print("testing")
     """
     
-    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim0/{pointCloud[: len(pointCloud) - 14]}PBD0.txt", "w") as f:
+    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim0/{pointCloud[: len(pointCloud) - 24]}PBD0.txt", "w") as f:
         f.write(resultDimZero)
 
-    print("B")
+    # print("B")
 
-    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim1/{pointCloud[: len(pointCloud) - 14]}PBD1.txt", "w") as f:
+    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim1/{pointCloud[: len(pointCloud) - 24]}PBD1.txt", "w") as f:
         f.write(resultDimOne)
 
 def main():
     print("Hello, World!")
     
-    pointClouds = os.listdir("../pointCloudsReal")
+    pointClouds = os.listdir("../pointCloudsSimplified")
+    # pointCloud = pointClouds[0]
+    # print(pointCloud)
+    # makeBarcodes(pointCloud)
 
+    
     for pointCloud in pointClouds:
         print(pointCloud)
         # print(pointCloud[: len(pointCloud) - 14])
         makeBarcodes(pointCloud)
-
+    
     # makeBarcodes("bottle-01PC.txt")
 
 if __name__ == "__main__":
