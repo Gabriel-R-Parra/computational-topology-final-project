@@ -5,7 +5,7 @@ import os
 
 def makeBarcodes(pointCloud: str):
     result = subprocess.run(
-        ["./ripser", "--format", "point-cloud", f"../pointCloudsSimplified/{pointCloud}"],
+        ["./ripser", "--format", "point-cloud", f"../pointCloudsRandom/{pointCloud}"],
         capture_output=True,
         text=True
     )
@@ -35,18 +35,18 @@ def makeBarcodes(pointCloud: str):
         # print("testing")
     """
     
-    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim0/{pointCloud[: len(pointCloud) - 24]}PBD0.txt", "w") as f:
+    with open(f"../persistenceBarcodesRandom/{pointCloud[8:10]}/Dim0/{pointCloud[: len(pointCloud) - 20]}RandomPBD0.txt", "w") as f:
         f.write(resultDimZero)
 
     # print("B")
 
-    with open(f"../persistenceBarcodes/{pointCloud[8:10]}/Dim1/{pointCloud[: len(pointCloud) - 24]}PBD1.txt", "w") as f:
+    with open(f"../persistenceBarcodesRandom/{pointCloud[8:10]}/Dim1/{pointCloud[: len(pointCloud) - 20]}RandomPBD1.txt", "w") as f:
         f.write(resultDimOne)
 
 def main():
     print("Hello, World!")
     
-    pointClouds = os.listdir("../pointCloudsSimplified")
+    pointClouds = os.listdir("../pointCloudsRandom")
     # pointCloud = pointClouds[0]
     # print(pointCloud)
     # makeBarcodes(pointCloud)
