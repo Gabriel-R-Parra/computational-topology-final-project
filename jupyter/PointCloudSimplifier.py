@@ -15,8 +15,24 @@ def main():
     """
     points = np.loadtxt(f"pointCloudsReal/{file}", delimiter=",")
 
-    print(points)
+    print(type(points))
+    N = points.shape[0]
+    idx = np.random.choice(N, size=1000, replace=False)
+    sample = points[idx]
 
+    np.savetxt(f"pointCloudsRandom/{file[:len(file) - 4]}Random.txt", sample, fmt="%.6f")
+    """
+    for file in files:
+        print(file)
+        points = np.loadtxt(f"pointCloudsReal/{file}", delimiter=",")
+
+        N = points.shape[0]
+        idx = np.random.choice(N, size=1000, replace=False)
+        sample = points[idx]
+
+        np.savetxt(f"pointCloudsRandom/{file[:len(file) - 4]}Random.txt", sample, fmt="%.6f")
+
+    """
     pcd = o3d.geometry.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(points)
     print("Loaded point count:", len(points))
@@ -27,7 +43,7 @@ def main():
 
     np.savetxt(f"pointCloudsSimplified/{file[:len(file) - 4]}Simplified.txt", down_points, fmt="%.6f")
     """
-    
+    """
     for file in files:
         print(file)
         points = np.loadtxt(f"pointCloudsReal/{file}", delimiter=",")
@@ -37,7 +53,7 @@ def main():
         down = pcd.voxel_down_sample(voxel_size=0.015)
         down_points = np.asarray(down.points)
         np.savetxt(f"pointCloudsSimplified/{file[:len(file) - 4]}Simplified.txt", down_points, fmt="%.6f")
-    
+    """
     
 if __name__ == "__main__":
     main()
