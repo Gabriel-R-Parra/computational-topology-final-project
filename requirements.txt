@@ -3,6 +3,7 @@ seaborn
 numpy
 pandas
 polars
+pyarrow
 scikit-learn
 jupyterlab
 jupyterlab-vim

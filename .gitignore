@@ -1,3 +1,9 @@
 .ipynb_checkpoints
 data
 __pycache__
+figures
+model-results
+pairwise-distances
+ripsers
+data.zip
+.Trash-1000
